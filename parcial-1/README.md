@@ -12,6 +12,11 @@ Diseñar e implementar dos soluciones diferentes para una Unidad Aritmético-Ló
 - Juan José Restrepo
 
 
+## Tabla de Operaciones:
+Esta es la tabla de cómo deben estar los inputs para las diferentes operaciones de la ALU.
+
+![image](https://github.com/user-attachments/assets/506a17f2-ccac-4a08-852e-4e4a48adcfd0)
+
 
 ## Solución 1: 
 
@@ -76,7 +81,8 @@ Esta solución cumple con todas las operaciones y requisitos!
 
 Luego propusimos una segunda solución, con la misma estructura base del anterior, pero en busca de la optimización del manejo de z, utilizando un DMux4Way16 para gestionar las cuatro opciones del selector de z. Esto nos permite solamente ejecutar la acción de z que deseamos, y no ejecutarlas todas cada vez que se realiza una acción, pero al costo de tener una compuerta más (Mux4Way16).
 
-![image](https://github.com/user-attachments/assets/84976eba-4ff4-4e63-a58d-eb0156271d8a)
+![image](https://github.com/user-attachments/assets/72d16280-0c3a-46eb-8f77-848e31e3db41)
+
 
 Estos son los requisitos del diseño: 
 
