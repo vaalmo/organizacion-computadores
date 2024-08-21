@@ -125,13 +125,13 @@ Esta solución cumple con todas las operaciones y requisitos!
 
 ### Posibles mejoras:
 
+- Duplicación de componentes: Tanto para la suma como para la resta con z, se hacen dos sumas consecutivas (una para la suma y otra para la resta), lo que implica el uso de dos chips Add16. Esto puede afectar la eficiencia, ya que las sumas requieren tiempo de propagación.
+- Uso del Mux4Way16: Se hace uso del Mux4Way16 para poder mostrar la opción escogida en el DMux4Way16, pero esta selección podría buscarse hacerse de una forma mucho más simplificada, sin necesidad de cargar todos los componentes que la Mux4Way16 implica.
+
 ## Conclusiones y Lecciones Aprendidas:
 
 - Pudimos ver la utilidad que tiene crear chips de compuertas lógicas, gracias a que al agrupar varias compuertas que tienen un mismo objetivo se facilita mucho el diseño e implementación de las diferentes aplicaciones, simplificando la vista y permitiendo reutilizarlas en diferentes puntos.
 - Gracias a este ejercicio utilizando los temas vistos en clase y a lo largo de la carrera, pudimos conectar mucho mejor la teoría, que muchas veces es confusa al ser tan intangible, con la práctica, pudiendo así entender mucho mejor el funcionamiento interno de los diferentes conceptos.
 - También nos sirvió mucho ver cómo funciona mucho mejor la computación de manera interna, teniendo así bases más fuertes para evaluar la eficiencia de un proceso computacional.
 
-
-- Duplicación de componentes: Tanto para la suma como para la resta con z, se hacen dos sumas consecutivas (una para la suma y otra para la resta), lo que implica el uso de dos chips Add16. Esto puede afectar la eficiencia, ya que las sumas requieren tiempo de propagación.
-- Uso del Mux4Way16: Se hace uso del Mux4Way16 para poder mostrar la opción escogida en el DMux4Way16, pero esta selección podría buscarse hacerse de una forma mucho más simplificada, sin necesidad de cargar todos los componentes que la Mux4Way16 implica.
 
