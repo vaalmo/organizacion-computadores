@@ -1,0 +1,54 @@
+CHIP ALUDmux {
+    IN
+        x[16], y[16], z[16], // 16-bit inputs
+        zx, // zero the x input?
+        nx, // negate the x input?
+        zy, // zero the y input?
+        ny, // negate the y input?
+        f,  // compute (out = x + y) or (out = x & y)?
+        no, // negate the out output?
+        sel[2]; // Define la operación con z
+    
+    OUT 
+        out[16]; // 16-bit output
+
+    PARTS:
+        // Para zx 
+        And16(a=x, b=false, out=zeroX);
+        Mux16(a=x, b=zeroX, sel=zx, out=outZX);
+
+        // Para zy 
+        And16(a=y, b=false, out=zeroY);
+        Mux16(a=y, b=zeroY, sel=zy, out=outZY);
+
+        // Para nx
+        Not16(in=outZX, out=notNX);
+        Mux16(a=outZX, b=notNX, sel=nx, out=outNX);
+
+        //Para ny
+        Not16(in=outZY, out=notNY);
+        Mux16(a=outZY, b=notNY, sel=ny, out=outNY);
+
+        // Para f
+        And16(a=outNX, b=outNY, out=outANDXY);
+        Add16(a=outNX, b=outNY, out=outADDXY);
+        Mux16(a=outANDXY, b=outADDXY, sel=f, out=outF);
+
+        // Para no
+        Not16(in=outF, out=notF);
+        Mux16(a=outF, b=notF, sel=no, out=outBase);
+
+        // Para z
+        DMux4Way16(in=outBase, sel=sel, a=outA, b=outB, c=outC, d=outDD);
+        //a:
+        Mux16(a=outA, b=outA, sel=false, out=outAA);
+        //b:
+        Add16(a=outB, b=z, out=outBB);
+
+        //c:
+        Negativo(in=z , out=notZ);
+        Add16(a=outC, b=notZ, out=outCC);
+
+        Mux4Way16(a=outAA, b=outBB, c=outCC, d=outDD, sel=sel, out=out);
+
+}
