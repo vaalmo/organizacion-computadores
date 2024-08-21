@@ -1,9 +1,19 @@
+# Parcial 1
+
+## Objetivo
+
+Diseñar e implementar dos soluciones diferentes para una Unidad Aritmético-Lógica (ALU) avanzada, utilizando las compuertas lógicas básicas aprendidas en el curso Nand2tetris. Cada solución debe implementar operaciones específicas definidas por señales de control e incorporar un tercer registro de entrada.
+
+
 ### Integrantes:
 
 - Sebastian Salazar Osorio
 - Valentina Morales Villada
+- Juan José Restrepo
 
-# Solución 1: 
+
+
+## Solución 1: 
 
 Llegamos primero a esta solución minimalista de la ALU, utilizando varios MUX16, ya que se debe escoger entre dos inputs y pasar una salida, con la ayuda de un selector. Siendo así, implementamos MUX y posteriormente MUX16 para seleccionar los inputs que quisiéramos utilizar para realizar diferentes operaciones, teniendo en cuenta que las operaciones con z se hacen al final con el output de las operaciones realizadas entre x e y. Además al final, para manejar el input de la z, utilizamos un Mux4Way16 que nos permitiera mediante el selector de 2 bits, escoger la salida con la operación que deseáramos. 
 
@@ -48,13 +58,13 @@ D. Compuertas lógicas permitidas:
 Esta solución cumple con todas las operaciones y requisitos!
 
 
-## Aspectos Positivos:
+### Aspectos Positivos:
 
 - Estructura organizada: El flujo de la ALU empieza con las operaciones sobre x y y primero, y luego se agregan las operaciones con z.
 - Uso de Mux4Way16: La selección entre las diferentes operaciones con z (ignorar z, sumar, restar) es eficiente con base en los 2 bits de selección.
 - Negativo: El uso del Negativo es una buena forma de manejar el z para la resta, ya que se procesa internamente hasta el complemento a 2.
 
-## Posibles mejoras:
+### Posibles mejoras:
 
 - Duplicación de componentes: Tanto para la suma como para la resta con z, se hacen dos sumas consecutivas (una para la suma y otra para la resta), lo que implica el uso de dos chips Add16. Esto puede afectar la eficiencia, ya que las sumas requieren tiempo de propagación.
 - Eficiencia del Mux4Way16: Aunque el Mux4Way16 es eficiente, el proceso de selección de 4 caminos puede tener un pequeño retardo, ya que la señal pasa a través de varias compuertas.
@@ -62,7 +72,7 @@ Esta solución cumple con todas las operaciones y requisitos!
 
 
 
-# Solución 2:
+## Solución 2:
 
 
 Estos son los requisitos del diseño: 
