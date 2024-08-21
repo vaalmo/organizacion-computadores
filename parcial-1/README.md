@@ -9,7 +9,7 @@ Llegamos primero a esta solución minimalista de la ALU, utilizando varios MUX16
 
 ![image](https://github.com/user-attachments/assets/d94da061-e0f7-4e15-b386-3732ef3b5ca5)
 
-Cabe decir que usamos el chip Negativo.hdl para manejar el negativo de la z de una manera más eficiente.
+Este es el diseño que propusimos como primera solución:
 
 ![image](https://github.com/user-attachments/assets/802f0af7-baca-40e0-9414-ea092e334ff4)
 
@@ -45,7 +45,20 @@ D. Compuertas lógicas permitidas:
    - AND, OR, NOT, XOR, MUX, DMUX (versiones de 16 bits permitidas)
 
 
-Esta solución cumple con todas las operaciones y requisitos, y además es rápida por el uso de los multiplexadores!
+Esta solución cumple con todas las operaciones y requisitos!
+
+
+## Aspectos Positivos:
+
+- Estructura organizada: El flujo de la ALU empieza con las operaciones sobre x y y primero, y luego se agregan las operaciones con z.
+- Uso de Mux4Way16: La selección entre las diferentes operaciones con z (ignorar z, sumar, restar) es eficiente con base en los 2 bits de selección.
+- Negativo: El uso del Negativo es una buena forma de manejar el z para la resta, ya que se procesa internamente hasta el complemento a 2.
+
+## Posibles mejoras:
+
+- Duplicación de componentes: Tanto para la suma como para la resta con z, se hacen dos sumas consecutivas (una para la suma y otra para la resta), lo que implica el uso de dos chips Add16. Esto puede afectar la eficiencia, ya que las sumas requieren tiempo de propagación.
+- Eficiencia del Mux4Way16: Aunque el Mux4Way16 es eficiente, el proceso de selección de 4 caminos puede tener un pequeño retardo, ya que la señal pasa a través de varias compuertas.
+
 
 
 
