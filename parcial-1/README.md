@@ -93,4 +93,4 @@ Estos son los requisitos del diseño:
 
 D. Compuertas lógicas permitidas:
 
-   - AND, OR, NOT, XOR, MUX, DMUX (versiones de 16 bits permitidas)
+- AND, OR, NOT, XOR, MUX, DMUX (versiones de 16 bits permitidas)
