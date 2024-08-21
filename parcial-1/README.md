@@ -126,7 +126,5 @@ Esta solución cumple con todas las operaciones y requisitos!
 ### Posibles mejoras:
 
 - Duplicación de componentes: Tanto para la suma como para la resta con z, se hacen dos sumas consecutivas (una para la suma y otra para la resta), lo que implica el uso de dos chips Add16. Esto puede afectar la eficiencia, ya que las sumas requieren tiempo de propagación.
-/n 
-/n
 - Uso del Mux4Way16: Se hace uso del Mux4Way16 para poder mostrar la opción escogida en el DMux4Way16, pero esta selección podría buscarse hacerse de una forma mucho más simplificada, sin necesidad de cargar todos los componentes que la Mux4Way16 implica.
 
