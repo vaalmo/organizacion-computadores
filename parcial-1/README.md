@@ -11,7 +11,7 @@ Estos son los requisitos del diseño:
 
 **A. Entradas:**
 
-- [ ] x[16], y[16], z[16] : Tres entradas de 16 bits cada una
+- [x] x[16], y[16], z[16] : Tres entradas de 16 bits cada una
 - [ ] zx, nx, zy, ny, f, no: Señales de control de 1 bit cada una
 - [ ] sel: Señal de selección de 2 bits para operaciones con z
 
