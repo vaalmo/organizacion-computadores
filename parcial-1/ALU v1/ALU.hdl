@@ -26,7 +26,7 @@ CHIP ALU {
         Not16(in=outZY, out=notNY);
         Mux16(a=outZY, b=notNY, sel=ny, out=outNY);
 
-        // Para f (x + y o x & y)
+        // Para f
         And16(a=outNX, b=outNY, out=outANDXY);
         Add16(a=outNX, b=outNY, out=outADDXY);
         Mux16(a=outANDXY, b=outADDXY, sel=f, out=outF);
@@ -36,13 +36,13 @@ CHIP ALU {
         Mux16(a=outF, b=notF, sel=no, out=outFinal);
 
         // Para suma de z
-        Add16(a=outFinal, b=z, out=outSumaZ); // Suma de out + z
+        Add16(a=outFinal, b=z, out=outSumaZ);
 
-        // Para resta de z (~z + 1)
+        // Para resta de z
         Negativo(in=z, out=negZ);
-        Add16(a=outFinal, b=negZ, out=outRestaZ); // Suma out + (~z + 1) (equivale a out - z)
+        Add16(a=outFinal, b=negZ, out=outRestaZ);
 
-        // Mux para seleccionar entre las diferentes operaciones
+        // Mux4way16 para seleccionar entre las diferentes operaciones
         Mux4Way16(a=outFinal, b=outSumaZ, c=outRestaZ, d=false, sel=sel, out=out);
  
 }
