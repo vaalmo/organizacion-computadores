@@ -80,28 +80,43 @@ Estos son los requisitos del diseño:
 
 **A. Entradas:**
 
-- [ ] x[16], y[16], z[16] : Tres entradas de 16 bits cada una
-- [ ] zx, nx, zy, ny, f, no: Señales de control de 1 bit cada una
-- [ ] sel: Señal de selección de 2 bits para operaciones con z
+- [x] x[16], y[16], z[16] : Tres entradas de 16 bits cada una
+- [x] zx, nx, zy, ny, f, no: Señales de control de 1 bit cada una
+- [x] sel: Señal de selección de 2 bits para operaciones con z
 
 **B. Salidas:**
 
-- [ ] out[16] : Salida de 16 bits
+- [x] out[16] : Salida de 16 bits
 
 **C. Funcionalidad:**
 
-- [ ] Si zx=1, entonces x=0
-- [ ] Si nx=1, entonces x=!x
-- [ ] Si zy=1, entonces y=0
-- [ ] Si ny=1, entonces y=!y
-- [ ] Si f=1, entonces out=x+y
-- [ ] Si f=0, entonces out=x&y
-- [ ] Si no=1, entonces out=!out
-- [ ] Si sel=00, ignorar z
-- [ ] Si sel=01, out = out + z
-- [ ] Si sel=10, out = out - z
+- [x] Si zx=1, entonces x=0
+- [x] Si nx=1, entonces x=!x
+- [x] Si zy=1, entonces y=0
+- [x] Si ny=1, entonces y=!y
+- [x] Si f=1, entonces out=x+y
+- [x] Si f=0, entonces out=x&y
+- [x] Si no=1, entonces out=!out
+- [x] Si sel=00, ignorar z
+- [x] Si sel=01, out = out + z
+- [x] Si sel=10, out = out - z
 
 
 D. Compuertas lógicas permitidas:
 
 - AND, OR, NOT, XOR, MUX, DMUX (versiones de 16 bits permitidas)
+
+Esta solución cumple con todas las operaciones y requisitos!
+
+
+### Aspectos Positivos:
+
+- Estructura organizada: El flujo de la ALU empieza con las operaciones sobre x y y primero, y luego se agregan las operaciones con z.
+- Uso de DMux4Way16 Mux4Way16: El DMux4Way16 permite seleccionar únicamente la operación de z que queremos hacer, sin necesidad de ejecutarlas todas. A pesar de que se usan dos compuertas para este proceso, estas requieren únicamente de un mismo selector.
+- Negativo: El uso del Negativo es una buena forma de manejar el z para la resta, ya que se procesa internamente hasta el complemento a 2.
+
+### Posibles mejoras:
+
+- Duplicación de componentes: Tanto para la suma como para la resta con z, se hacen dos sumas consecutivas (una para la suma y otra para la resta), lo que implica el uso de dos chips Add16. Esto puede afectar la eficiencia, ya que las sumas requieren tiempo de propagación.
+- Uso del Mux4Way16: Se hace uso del Mux4Way16 para poder mostrar la opción escogida en el DMux4Way16, pero esta selección podría buscarse hacerse de una forma mucho más simplificada, sin necesidad de cargar todos los componentes que la Mux4Way16 implica.
+
