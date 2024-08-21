@@ -74,6 +74,7 @@ Esta solución cumple con todas las operaciones y requisitos!
 
 ## Solución 2:
 
+Luego propusimos una segunda solución, con la misma estructura base del anterior, pero en busca de la optimización del manejo de z, utilizando un DMux4Way16 para gestionar las cuatro opciones del selector de z. Esto nos permite solamente ejecutar la acción de z que deseamos, y no ejecutarlas todas cada vez que se realiza una acción, pero al costo de tener una compuerta más (Mux4Way16).
 
 Estos son los requisitos del diseño: 
 
